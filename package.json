@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "lerna": "^6.6.1"
+  },
+  "name": "ag-typeORM",
+  "workspaces": [
+    "packages/*"
+  ],
+  "version": "0.0.1"
+}
