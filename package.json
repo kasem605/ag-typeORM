@@ -2,7 +2,7 @@
   "devDependencies": {
     "lerna": "^6.6.1"
   },
-  "name": "ag-typeORM",
+  "name": "ag-typeorm",
   "workspaces": [
     "packages/*"
   ],
