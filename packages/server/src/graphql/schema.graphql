@@ -4,8 +4,8 @@ type Query {
     getPostsByUserId(userId: ID!, offset: Int, limit: Int): [Post]
     getFeed(offset: Int, limit: Int): [Post]
     getNotificationsByUserId(userId: ID!, offset: Int, limit: Int): [Notification]
-    getCommentsByPostId(postId: ID!, offset: int, limit: Int): [Comment]
-    getLikesByPostId(postId: ID!, offset: int, limit: Int): [Like]  
+    getCommentsByPostId(postId: ID!, offset: Int, limit: Int): [Comment]
+    getLikesByPostId(postId: ID!, offset: Int, limit: Int): [Like]  
     searchUsers(searchQuery: String): [User]
 
 }
@@ -13,7 +13,7 @@ type Query {
 type Mutation {
     post(text: String, image: String): Post
     remove(id: ID!): ID
-    comment(comment: String!, po: ID!): comment
+    comment(comment: String!, po: ID!): Comment
     removeComment(id: ID!): Comment
     like(postId: ID!): Like
     removeLike(post: ID!): Like
