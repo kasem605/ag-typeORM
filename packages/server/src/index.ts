@@ -2,11 +2,15 @@ import express, {Application} from "express";
 import {ApolloServer} from "apollo-server-express";
 import schema from "./graphql/schema";
 import casual from "casual";
+import cors from "cors";
 
 async function startApolloServer() {
+    let postsIds: string[] =[];
+    let userids: string[] = [];
+
     const mocks = {
         User: () => ({
-            id: casual.uuid,
+            id: () => {let uuid = casual.uuid; userids.push(uuid); return uuid},
             fullName: casual.full_name,
             bio: casual.text,
             email: casual.email,
@@ -18,7 +22,8 @@ async function startApolloServer() {
         }),
 
         Post: () => ({
-            id: casual.uuid,
+            id: () => {let uuid = casual.uuid; postsIds.push(uuid); return uuid},
+            author: casual.random_element(userids),
             text: casual.text,
             image: 'https://picsum.photos/seed/picsum/200/300',
             commentsCount: () => { casual.integer(0)},
@@ -30,14 +35,16 @@ async function startApolloServer() {
 
         Comment: () => ({
             id: casual.uuid,
+            author: casual.random_element(userids),
             comment: casual.text,
-            post: casual.uuid,
+            post: casual.random_element(postsIds),
             createdAt: () => { casual.date()}   
         }),
 
         Like: () => ({
             id: casual.uuid,
-            post: casual.uuid
+            user: casual.random_element(userids),
+            post: casual.random_element(postsIds),
         })
     };
 
@@ -53,6 +60,7 @@ async function startApolloServer() {
 
     const PORT = 8080;
     const app: Application = express();
+    app.use(cors());
     const server: ApolloServer =  new ApolloServer({schema, mocks, mockEntireSchema: false});
     await server.start();
     server.applyMiddleware({
