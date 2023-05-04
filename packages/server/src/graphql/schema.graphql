@@ -56,13 +56,13 @@ type Comment {
     id: ID!
     comment: String!
     author: User!
-    post: ID!
+    post: Post!
     createdAt: String!
 }
 
 type Like {
     id: ID!
     user: User!
-    post: ID!
+    post: Post!
     createdAt: String!
 }
