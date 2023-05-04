@@ -1,0 +1,30 @@
+{
+  "name": "@ag-typeorm/ag-typeorm",
+  "version": "0.0.1",
+  "description": "Generate graphql types",
+  "keywords": [
+    "graphql",
+    "types"
+  ],
+  "author": "kasem605 <kasem_i@yahoo.com>",
+  "homepage": "https://github.com/kasem605/ag-typeORM#readme",
+  "license": "MIT",
+  "main": "lib/graphql-types.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kasem605/ag-typeORM.git"
+  },
+  "scripts": {
+    "test": "node ./__tests__/graphql-types.test.js"
+  },
+  "bugs": {
+    "url": "https://github.com/kasem605/ag-typeORM/issues"
+  }
+}
