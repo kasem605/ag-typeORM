@@ -1,22 +1,11 @@
 import express, {Application} from "express";
 import {ApolloServer} from "apollo-server-express";
 import schema from "./graphql/schema";
+import casual from "casual";
 import cors from "cors";
-import "reflect-metadata";
-import { DataSource } from "typeorm";
-import ormconfig from "./db/ormconfig";
-
-//import casual from "casual";
-
-const connection = new DataSource(ormconfig);
-
-connection.initialize().then(() => {
-    startApolloServer();
-    console.log("Connected to database!!");
-}).catch(error => console.log("Database connection error: ", error));
 
 async function startApolloServer() {
-    /* let postsIds: string[] =[];
+    let postsIds: string[] =[];
     let userids: string[] = [];
 
     const mocks = {
@@ -57,7 +46,7 @@ async function startApolloServer() {
             user: casual.random_element(userids),
             post: casual.random_element(postsIds),
         })
-    }; 
+    };
 
     Query: () => ({
         getPostsByUserId: () => [...new Array(casual.integer(10,100))],
@@ -67,12 +56,12 @@ async function startApolloServer() {
         getLikesByUPostId: () => [...new Array(casual.integer(10,100))],
         searchusers: () => [...new Array(casual.integer(10,100))],
 
-    }) */
+    })
 
     const PORT = 8080;
     const app: Application = express();
     app.use(cors());
-    const server: ApolloServer =  new ApolloServer({schema});
+    const server: ApolloServer =  new ApolloServer({schema, mocks, mockEntireSchema: false});
     await server.start();
     server.applyMiddleware({
         app,
@@ -82,4 +71,4 @@ async function startApolloServer() {
         console.log(`server is running a http://localhost:${PORT}`);
     });
 }
-
+startApolloServer();
