@@ -1,6 +1,7 @@
 import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn} from "typeorm";
 import { OneToMany } from "typeorm";
 import { Post } from "./Post";
+import {Comment} from "./Comment";
 import { Like } from "./Like";
 import { Notification } from "./Notification";
 
