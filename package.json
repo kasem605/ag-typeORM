@@ -1,13 +1,19 @@
 {
-  "devDependencies": {
-    "lerna": "^6.6.1"
-  },
-  "name": "ag-typeorm",
+  "name": "root",
+  "private": true,
   "workspaces": [
     "packages/*"
   ],
+  "devDependencies": {
+    "lerna": "^6.6.2"
+  },
   "version": "0.0.1",
   "dependencies": {
-    "typeorm": "^0.3.15"
+    "@graphql-codegen/cli": "^3.3.1",
+    "@graphql-codegen/typescript": "^3.0.4",
+    "@graphql-codegen/typescript-resolvers": "^3.2.1"
+  },
+  "scripts": {
+    "codegen": "npx graphql-codegen --watch"
   }
 }
