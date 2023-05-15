@@ -1,4 +1,4 @@
-import {DataSourceOptions} from "typeorm";
+/* import {DataSourceOptions} from "typeorm";
 
 const dataSourceOptions: DataSourceOptions = {
     type: "mysql",
@@ -8,4 +8,4 @@ const dataSourceOptions: DataSourceOptions = {
     synchronize: false
 };
 
-export = dataSourceOptions;
+export = dataSourceOptions; */
